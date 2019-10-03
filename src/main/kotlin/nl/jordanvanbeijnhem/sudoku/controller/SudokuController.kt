@@ -5,6 +5,7 @@ import nl.jordanvanbeijnhem.sudoku.model.Cell
 import nl.jordanvanbeijnhem.sudoku.model.Difficulty
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -12,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController
 class SudokuController {
 
     @GetMapping
-    fun getSudoku(): List<Cell>? {
+    fun getSudoku(@RequestParam("difficulty") difficulty: Difficulty): List<Cell>? {
         val api = SudokuGeneratorApi.createApi()
         val cells = arrayListOf<Cell>()
 
-        val response = api.getSudoku(Difficulty.EASY).execute()
+        val response = api.getSudoku(difficulty).execute()
         response.body()?.cells?.let {
             cells.addAll(it)
             addEmptyCells(cells)
