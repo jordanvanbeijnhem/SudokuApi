@@ -11,6 +11,7 @@
     <groupId>nl.jordanvanbeijnhem</groupId>
     <artifactId>sudoku</artifactId>
     <version>1.0.0</version>
+    <packaging>war</packaging>
     <name>sudoku</name>
     <description>Sudoku api for my sudoku app</description>
 
