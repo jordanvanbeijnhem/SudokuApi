@@ -6,13 +6,13 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class SudokuGeneratorApi {
+class SudokuApi {
 
     companion object {
 
-        private const val baseUrl = "http://www.cs.utep.edu/cheon/ws/"
+        private const val baseUrl = "https://sugoku.herokuapp.com/"
 
-        fun createApi(): SudokuGeneratorApiService {
+        fun createApi(): SudokuApiService {
             val httpLoggingInterceptor = HttpLoggingInterceptor()
             val okHttpClient = OkHttpClient.Builder()
                     .addInterceptor(httpLoggingInterceptor.apply { httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY })
@@ -25,7 +25,7 @@ class SudokuGeneratorApi {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
 
-            return sudokuApi.create(SudokuGeneratorApiService::class.java)
+            return sudokuApi.create(SudokuApiService::class.java)
         }
     }
 }
